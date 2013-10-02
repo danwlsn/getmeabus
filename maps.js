@@ -22,24 +22,23 @@ function initialize() {
       var pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
 
+      var gpostcode;
       var Info = {
       	fetch: function(latlng) {
-      	var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&sensor=true'
-			$.getJSON(url, function(json) {
-				var postcode = String((json.results[1].address_components[0].long_name)+' Yo Bitch!')
-				console.log(postcode +' THIS IS ADDED IN THE CONSOLE');
-				$('.code').html(json.results[1].address_components[0].long_name)
-			})
+        	var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&sensor=true'
+  			  $.getJSON(url, function(json) {
+    				window.gpostcode = String((json.results[1].address_components[0].long_name))
+    				$('.code').html(window.gpostcode)
+            var infowindow = new google.maps.InfoWindow({
+              map: map,
+              position: pos,
+              content: window.gpostcode
+            });
+           })
       	}
       }
 
       Info.fetch(String(position.coords.latitude)+","+String(position.coords.longitude));
-
-      var infowindow = new google.maps.InfoWindow({
-        map: map,
-        position: pos,
-        content: String(pos)
-      });
 
       var marker = new google.maps.Marker({
         position: pos,
