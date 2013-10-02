@@ -69,7 +69,8 @@ function initialize() {
 
     var options = {
       map: map,
-      position: new google.maps.LatLng(53.48, -2.2333),
+      position: new google.maps.LatLng
+(53.48131904602191, -2.232416151348957),
       content: content
     };
 
