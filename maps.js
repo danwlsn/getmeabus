@@ -22,6 +22,7 @@ function initialize() {
       var pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
 
+      // Post code business
       var gpostcode;
       var Info = {
       	fetch: function(latlng) {
@@ -40,12 +41,14 @@ function initialize() {
 
       Info.fetch(String(position.coords.latitude)+","+String(position.coords.longitude));
 
+      // Marker on location
       var marker = new google.maps.Marker({
         position: pos,
         map: map,
         animation: google.maps.Animation.DROP
       });
 
+      // Center map on postion
       map.setCenter(pos);
     }, function() {
       handleNoGeolocation(true);
@@ -58,18 +61,18 @@ function initialize() {
   function handleNoGeolocation(errorFlag) {
     if (errorFlag) {
       $('#map-canvas').addClass('blur');
-      $('.postcode').css('display', 'block');
+      $('.postcode--search').toggle();
       var content = 'Error: The Geolocation service failed.';
     } else {
       $('#map-canvas').addClass('blur');
-      $('.postcode').css('display', 'block');
+      $('.postcode--search').css('display', 'block');
       var content = 'Error: Your browser doesn\'t support geolocation.';
+      $('.postcode--btn').click(searchUsingPostcode());
     }
 
     var options = {
       map: map,
-      position: new google.maps.LatLng
-(53.48131904602191, -2.232416151348957),
+      position: new google.maps.LatLng (53.48131904602191, -2.232416151348957),
       content: content
     };
 
