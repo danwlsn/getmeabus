@@ -1,8 +1,11 @@
+/* Import google fonts*/
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100);
+
 html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   background: #FAF8FF;
   color: #800000;
 }
@@ -45,12 +48,10 @@ header {
 	width:200px;
 	height:70px;
 	line-height: 1;
+	font-weight: 100;
+	font-size: 1.3rem;
 	text-align: center;
 	background-color: rgba(255,255,255,0.5);
 	border-radius: 10px;
 	border:1px solid #000;
 }
-
-.postcode h1 {
-		font-weight: 100;
-	}
