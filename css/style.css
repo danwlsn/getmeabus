@@ -3,6 +3,8 @@ html, body {
   padding: 0;
   height: 100%;
   font-family: sans-serif;
+  background: #FAF8FF;
+  color: #800000;
 }
 
 #map-canvas {
@@ -10,14 +12,17 @@ html, body {
 	padding: 0;
 	height: 300px;
 	width:100%;
+	border-top: 1px solid #800000;
+	border-bottom: 1px solid #800000;
 	-webkit-transition:all 0.3s ease-in-out;
 	-moz-transition:all 0.3s ease-in-out;
 	-o-transition:all 0.3s ease-in-out;
 	-ms-transition:all 0.3s ease-in-out;
 	transition:all 0.3s ease-in-out;
 }
-	#map-canvas:hover {
-		-webkit-filter: blur(0);
+
+#map-canvas:hover {
+	-webkit-filter: blur(0);
 	}
 
 .blur {
@@ -45,6 +50,7 @@ header {
 	border-radius: 10px;
 	border:1px solid #000;
 }
-	.postcode h1 {
+
+.postcode h1 {
 		font-weight: 100;
 	}
