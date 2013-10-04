@@ -39,6 +39,29 @@ function initialize() {
       	}
       }
 
+      // replacing the above function
+      // Should return postcode when complete
+      // Just returning Object object so far
+      function latLngToPostcode(latlng) {
+        var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&sensor=true';
+        return $.getJSON(url, function(json) {
+            GlobalPostcode = String(json.results[1].address_components[0].long_name);
+           })
+      }
+
+      function itCantBeThatEasy(latlng) {
+        var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&sensor=true';
+        // var json = $.getJSON(url);
+        $.getJSON(url, function(json) {
+            String(json.results[1].address_components[0].long_name));
+        })
+      }
+
+      itCantBeThatEasy(String(position.coords.latitude)+","+String(position.coords.longitude));
+
+      // Alert as debug for above function
+      alert(latLngToPostcode(String(position.coords.latitude)+","+String(position.coords.longitude)));
+
       Info.fetch(String(position.coords.latitude)+","+String(position.coords.longitude));
 
       // Marker on location
