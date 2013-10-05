@@ -43,29 +43,32 @@ function initialize() {
       	}
       }
 
-      // replacing the above function
-      // Should return postcode when complete
-      // Just returning Object object so far
-      // function latLngToPostcode(latlng) {
-      //   var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&sensor=true';
-      //   return $.getJSON(url, function(json) {
-      //       GlobalPostcode = String(json.results[1].address_components[0].long_name);
-      //      })
-      // }
+      /* **************************
+      * replacing the above function
+      * Should return postcode when complete
+      * Just returning Object object so far
+      function latLngToPostcode(latlng) {
+        var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&sensor=true';
+        return $.getJSON(url, function(json) {
+            GlobalPostcode = String(json.results[1].address_components[0].long_name);
+           })
+      }
 
-      // function itCantBeThatEasy(latlng) {
-      //   var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&sensor=true';
-      //   // var json = $.getJSON(url);
-      //   $.getJSON(url, function(json) {
-      //       String(json.results[1].address_components[0].long_name));
-      //   })
-      // }
+      function itCantBeThatEasy(latlng) {
+        var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&sensor=true';
+        // var json = $.getJSON(url);
+        $.getJSON(url, function(json) {
+            String(json.results[1].address_components[0].long_name));
+        })
+      }
 
-      // itCantBeThatEasy(String(position.coords.latitude)+","+String(position.coords.longitude));
+      itCantBeThatEasy(String(position.coords.latitude)+","+String(position.coords.longitude));
 
-      // Alert as debug for above function
-      // alert(latLngToPostcode(String(position.coords.latitude)+","+String(position.coords.longitude)));
+      * Alert as debug for above function
+      alert(latLngToPostcode(String(position.coords.latitude)+","+String(position.coords.longitude)));
+      * *******************************/
 
+      // Fetch postcode from latlng
       Info.fetch(String(position.coords.latitude)+","+String(position.coords.longitude));
 
       // Marker on location
@@ -105,6 +108,33 @@ function initialize() {
     var infowindow = new google.maps.InfoWindow(options);
     map.setCenter(options.position);
   }
+
+  /* ***********************
+  * None of this shit works.
+  * ************************
+  var localSearch = new GlocalSearch();
+  function usePointFromPostcode(postcode, callbackFunction) {
+    localSearch.setSearchCompleteCallback(null,
+      function() {
+        if (localSearch.results[0]) {
+          var resultLat = localSearch.results[0].lat;
+          var resultLng = localSearch.results[0].lng;
+          var point = new GLatLng(resultLat,resultLng);
+          callbackFunction(point);
+        }else{
+          alert("Postcode not found!");
+        }
+      });
+    localSearch.execute(postcode + ", UK");
+  }
+
+  // DOM listener
+  google.maps.event.addDomListener(document.getElementById('postcode--btn'), 'click', function(){
+    alert('button pressed');
+    usePointFromPostcode(document.getElementById('postcode--input').value, setCenterToPoint);
+  })
+
+  * *********************/
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
