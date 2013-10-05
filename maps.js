@@ -94,7 +94,6 @@ function initialize() {
       $('#map-canvas').addClass('blur');
       $('.postcode--search').css('display', 'block');
       var content = 'Error: Your browser doesn\'t support geolocation.';
-      $('.postcode--btn').click(searchUsingPostcode());
     }
 
     var options = {
