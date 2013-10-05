@@ -13,13 +13,17 @@ function initialize() {
     ]
   };
 
+  // Default latlng
+  var lat =53.48131904602191;
+  var lng = -2.232416151348957;
+
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
 
     // Try HTML5 geolocation
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude,
+      pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
 
       // Post code business
@@ -95,7 +99,7 @@ function initialize() {
 
     var options = {
       map: map,
-      position: new google.maps.LatLng (53.48131904602191, -2.232416151348957),
+      position: new google.maps.LatLng (lat, lng),
       content: content
     };
 
