@@ -43,7 +43,6 @@ function initialize() {
       	}
       }
 
-<<<<<<< HEAD
       Info.fetch(String(position.coords.latitude)+","+String(position.coords.longitude));
 
       // This block locates the nearest bus stops
@@ -85,7 +84,6 @@ function initialize() {
       // Alert as debug for above function
       // alert(latLngToPostcode(String(position.coords.latitude)+","+String(position.coords.longitude)));
 
-=======
       /* **************************
       * replacing the above function
       * Should return postcode when complete
@@ -111,10 +109,6 @@ function initialize() {
       alert(latLngToPostcode(String(position.coords.latitude)+","+String(position.coords.longitude)));
       * *******************************/
 
-      // Fetch postcode from latlng
-      Info.fetch(String(position.coords.latitude)+","+String(position.coords.longitude));
-
->>>>>>> 129ec1cb34f1cea731b19aa4adb3a9b125556587
       // Marker on location
       var marker = new google.maps.Marker({
         position: pos,
@@ -145,12 +139,9 @@ function initialize() {
 
     var options = {
       map: map,
-<<<<<<< HEAD
       position: new google.maps.LatLng (53.48131904602191, -2.232416151348957)
-=======
       position: new google.maps.LatLng (lat, lng),
       content: content
->>>>>>> 129ec1cb34f1cea731b19aa4adb3a9b125556587
     };
 
     var infowindow = new google.maps.InfoWindow(options);
