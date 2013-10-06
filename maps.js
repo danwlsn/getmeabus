@@ -13,13 +13,17 @@ function initialize() {
     ]
   };
 
+  // Default latlng
+  var lat =53.48131904602191;
+  var lng = -2.232416151348957;
+
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
 
     // Try HTML5 geolocation
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude,
+      pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
 
       // Post code business
@@ -39,6 +43,7 @@ function initialize() {
       	}
       }
 
+<<<<<<< HEAD
       Info.fetch(String(position.coords.latitude)+","+String(position.coords.longitude));
 
       // This block locates the nearest bus stops
@@ -80,6 +85,36 @@ function initialize() {
       // Alert as debug for above function
       // alert(latLngToPostcode(String(position.coords.latitude)+","+String(position.coords.longitude)));
 
+=======
+      /* **************************
+      * replacing the above function
+      * Should return postcode when complete
+      * Just returning Object object so far
+      function latLngToPostcode(latlng) {
+        var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&sensor=true';
+        return $.getJSON(url, function(json) {
+            GlobalPostcode = String(json.results[1].address_components[0].long_name);
+           })
+      }
+
+      function itCantBeThatEasy(latlng) {
+        var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&sensor=true';
+        // var json = $.getJSON(url);
+        $.getJSON(url, function(json) {
+            String(json.results[1].address_components[0].long_name));
+        })
+      }
+
+      itCantBeThatEasy(String(position.coords.latitude)+","+String(position.coords.longitude));
+
+      * Alert as debug for above function
+      alert(latLngToPostcode(String(position.coords.latitude)+","+String(position.coords.longitude)));
+      * *******************************/
+
+      // Fetch postcode from latlng
+      Info.fetch(String(position.coords.latitude)+","+String(position.coords.longitude));
+
+>>>>>>> 129ec1cb34f1cea731b19aa4adb3a9b125556587
       // Marker on location
       var marker = new google.maps.Marker({
         position: pos,
@@ -106,17 +141,48 @@ function initialize() {
       $('#map-canvas').addClass('blur');
       $('.postcode--search').css('display', 'block');
       var content = 'Error: Your browser doesn\'t support geolocation.';
-      $('.postcode--btn').click(searchUsingPostcode());
     }
 
     var options = {
       map: map,
+<<<<<<< HEAD
       position: new google.maps.LatLng (53.48131904602191, -2.232416151348957)
+=======
+      position: new google.maps.LatLng (lat, lng),
+      content: content
+>>>>>>> 129ec1cb34f1cea731b19aa4adb3a9b125556587
     };
 
     var infowindow = new google.maps.InfoWindow(options);
     map.setCenter(options.position);
   }
+
+  /* ***********************
+  * None of this shit works.
+  * ************************
+  var localSearch = new GlocalSearch();
+  function usePointFromPostcode(postcode, callbackFunction) {
+    localSearch.setSearchCompleteCallback(null,
+      function() {
+        if (localSearch.results[0]) {
+          var resultLat = localSearch.results[0].lat;
+          var resultLng = localSearch.results[0].lng;
+          var point = new GLatLng(resultLat,resultLng);
+          callbackFunction(point);
+        }else{
+          alert("Postcode not found!");
+        }
+      });
+    localSearch.execute(postcode + ", UK");
+  }
+
+  // DOM listener
+  google.maps.event.addDomListener(document.getElementById('postcode--btn'), 'click', function(){
+    alert('button pressed');
+    usePointFromPostcode(document.getElementById('postcode--input').value, setCenterToPoint);
+  })
+
+  * *********************/
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
