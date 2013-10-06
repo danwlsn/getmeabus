@@ -1,7 +1,7 @@
 var map;
 function initialize() {
   var mapOptions = {
-    zoom: 17,
+    zoom: 16,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     styles: [
       {
@@ -39,6 +39,24 @@ function initialize() {
       	}
       }
 
+      Info.fetch(String(position.coords.latitude)+","+String(position.coords.longitude));
+
+      // This block locates the nearest bus stops
+      var url = 'http://transportapi.com/v3/uk/bus/stops/near.json?lat='
+      + String(position.coords.latitude) + '&lon=' + String(position.coords.longitude) 
+      + '&api_key=e2c96777c715a5d317c9d2016fdf5284&app_id=b4d09e5d'
+      $.getJSON(url, function(data) {
+        for (var i = 0; i <= data.stops.length; i++){
+          var item = data.stops[i];
+          var markerLatlng = new google.maps.LatLng(item.latitude, item.longitude);
+          var marker = new google.maps.Marker({
+              position: markerLatlng
+          });
+          marker.item = item; // store information of each item in marker
+          marker.setMap(map); // where `map` is the instance of Google Map
+        }
+      });
+
       // replacing the above function
       // Should return postcode when complete
       // Just returning Object object so far
@@ -61,8 +79,6 @@ function initialize() {
 
       // Alert as debug for above function
       // alert(latLngToPostcode(String(position.coords.latitude)+","+String(position.coords.longitude)));
-
-      Info.fetch(String(position.coords.latitude)+","+String(position.coords.longitude));
 
       // Marker on location
       var marker = new google.maps.Marker({
@@ -95,8 +111,7 @@ function initialize() {
 
     var options = {
       map: map,
-      position: new google.maps.LatLng (53.48131904602191, -2.232416151348957),
-      content: content
+      position: new google.maps.LatLng (53.48131904602191, -2.232416151348957)
     };
 
     var infowindow = new google.maps.InfoWindow(options);
