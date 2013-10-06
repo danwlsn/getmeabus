@@ -140,9 +140,14 @@ function initialize() {
     var options = {
       map: map,
       position: new google.maps.LatLng (53.48131904602191, -2.232416151348957)
-      position: new google.maps.LatLng (lat, lng),
-      content: content
     };
+
+    // var options = {
+    //   map: map,
+    //   position: new google.maps.LatLng (53.48131904602191, -2.232416151348957)
+    //   position: new google.maps.LatLng (lat, lng),
+    //   content: content
+    // };
 
     var infowindow = new google.maps.InfoWindow(options);
     map.setCenter(options.position);
