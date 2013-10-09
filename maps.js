@@ -79,22 +79,29 @@ function initialize() {
 
       // This block displaces the bus departure times for the selceted bus stop using the actocode
       function getBusTimetable(bonner){
-      var currentdate = new Date();
-      var date = currentdate.getFullYear() + "-"
-                     + (currentdate.getMonth()+1)  + "-"
-                     + currentdate.getDate();
-      var time = currentdate.getHours() + ":"
-                  + currentdate.getMinutes();
-      var bustimeurl = 'http://transportapi.com/v3/uk/bus/stop/'+bonner+'/'+date+'/'+time+'/timetable.json?group=no&api_key=e2c96777c715a5d317c9d2016fdf5284&app_id=b4d09e5d'
-      $.getJSON(bustimeurl, function(data) {
-        console.log(String(bustimeurl));
-        for (x = 0; x <= data.departures.all.length; x++) {
-          console.log("Bus Number: " + String(data.departures.all[x].line) +
-            "\nTowards: " + String(data.departures.all[x].direction) +
-            "\nNext Departure: " + String(data.departures.all[x].aimed_departure_time));
-        }
-
-      });
+        var currentdate = new Date();
+        var date = currentdate.getFullYear() + "-"
+                       + (currentdate.getMonth()+1)  + "-"
+                       + currentdate.getDate();
+        var time = currentdate.getHours() + ":"
+                    + currentdate.getMinutes();
+        var bustimeurl = 'http://transportapi.com/v3/uk/bus/stop/'+bonner+'/'+date+'/'+time+'/timetable.json?group=no&api_key=e2c96777c715a5d317c9d2016fdf5284&app_id=b4d09e5d'
+        $.getJSON(bustimeurl, function(data) {
+          // console.log(String(bustimeurl));
+          var bustimes = [];
+          for (x = 0; x <= data.departures.all.length; x++) {
+            console.log("Bus Number: " + String(data.departures.all[x].line) +
+              "\nTowards: " + String(data.departures.all[x].direction) +
+              "\nNext Departure: " + String(data.departures.all[x].aimed_departure_time));
+            var times = [data.departures.all[x].line, data.departures.all[x].direction, data.departures.all[x].aimed_departure_time];
+            bustimes.push(times);
+            for (y = 0; y <= bustimes.length; y++) {
+              $('.display-timetable').html("Bus Number: " + String(bustimes[y][0]) +
+              "\nTowards: " + String(bustimes[y][1]) +
+              "\nNext Departure: " + String(bustimes[y][2]));
+            }
+          }
+        });
       }
 
       // replacing the above function
