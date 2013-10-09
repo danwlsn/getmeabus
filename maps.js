@@ -70,11 +70,26 @@ function initialize() {
               return function() {
                 infowindow.setContent(busstops[i][0]);
                 infowindow.open(map, marker);
+                getBusTimetable(infowindow.content);
               }
             })(marker, i));
           }
         }
       });
+
+      // This block displaces the bus departure times for the selceted bus stop using the actocode
+      function getBusTimetable(bonner){
+      var currentdate = new Date();
+      var date = currentdate.getFullYear() + "-"
+                     + (currentdate.getMonth()+1)  + "-"
+                     + currentdate.getDate();
+      var time = currentdate.getHours() + ":"
+                  + currentdate.getMinutes();
+      var bustimeurl = 'http://transportapi.com/v3/uk/bus/stop/'+bonner+'/'+date+'/'+time+'/timetable.json?api_key=e2c96777c715a5d317c9d2016fdf5284&app_id=b4d09e5d'
+      $.getJSON(bustimeurl, function(blah) {
+      console.log(String(bustimeurl));
+    });
+      }
 
       // replacing the above function
       // Should return postcode when complete
