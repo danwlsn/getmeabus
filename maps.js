@@ -45,21 +45,34 @@ function initialize() {
 
       Info.fetch(String(position.coords.latitude)+","+String(position.coords.longitude));
 
+
       // This block locates the nearest bus stops
       var url = 'http://transportapi.com/v3/uk/bus/stops/near.json?lat='
       + String(position.coords.latitude) + '&lon=' + String(position.coords.longitude)
       + '&api_key=e2c96777c715a5d317c9d2016fdf5284&app_id=b4d09e5d'
       $.getJSON(url, function(data) {
+        var busstops = [];
         for (var i = 0; i <= data.stops.length; i++){
+          var infowindow = new google.maps.InfoWindow();
           var item = data.stops[i];
-          var markerLatlng = new google.maps.LatLng(item.latitude, item.longitude);
-          var marker = new google.maps.Marker({
-              position: markerLatlng,
-              animation: google.maps.Animation.DROP,
-              icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
-          });
-          marker.item = item; // store information of each item in marker
-          marker.setMap(map); // where `map` is the instance of Google Map
+          var info = [item.atcocode, item.latitude, item.longitude];
+          busstops.push(info);
+
+          for (i = 0; i < busstops.length; i++) {
+            marker = new google.maps.Marker({
+              position: new google.maps.LatLng(busstops[i][1], busstops[i][2]),
+              map: map,
+              icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+              atcocode: busstops[i][0]
+            });
+
+            google.maps.event.addListener(marker, 'click', (function(marker, i) {
+              return function() {
+                infowindow.setContent(busstops[i][0]);
+                infowindow.open(map, marker);
+              }
+            })(marker, i));
+          }
         }
       });
 
