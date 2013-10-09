@@ -86,9 +86,10 @@ function initialize() {
       var time = currentdate.getHours() + ":"
                   + currentdate.getMinutes();
       var bustimeurl = 'http://transportapi.com/v3/uk/bus/stop/'+bonner+'/'+date+'/'+time+'/timetable.json?api_key=e2c96777c715a5d317c9d2016fdf5284&app_id=b4d09e5d'
-      $.getJSON(bustimeurl, function(blah) {
-      console.log(String(bustimeurl));
-    });
+      $.getJSON(bustimeurl, function(data) {
+        console.log(String(bustimeurl));
+        console.log(String(data.departures[101][0].line));
+      });
       }
 
       // replacing the above function
