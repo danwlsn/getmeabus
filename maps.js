@@ -47,14 +47,16 @@ function initialize() {
 
       // This block locates the nearest bus stops
       var url = 'http://transportapi.com/v3/uk/bus/stops/near.json?lat='
-      + String(position.coords.latitude) + '&lon=' + String(position.coords.longitude) 
+      + String(position.coords.latitude) + '&lon=' + String(position.coords.longitude)
       + '&api_key=e2c96777c715a5d317c9d2016fdf5284&app_id=b4d09e5d'
       $.getJSON(url, function(data) {
         for (var i = 0; i <= data.stops.length; i++){
           var item = data.stops[i];
           var markerLatlng = new google.maps.LatLng(item.latitude, item.longitude);
           var marker = new google.maps.Marker({
-              position: markerLatlng
+              position: markerLatlng,
+              animation: google.maps.Animation.DROP,
+              icon: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png'
           });
           marker.item = item; // store information of each item in marker
           marker.setMap(map); // where `map` is the instance of Google Map
