@@ -85,10 +85,15 @@ function initialize() {
                      + currentdate.getDate();
       var time = currentdate.getHours() + ":"
                   + currentdate.getMinutes();
-      var bustimeurl = 'http://transportapi.com/v3/uk/bus/stop/'+bonner+'/'+date+'/'+time+'/timetable.json?api_key=e2c96777c715a5d317c9d2016fdf5284&app_id=b4d09e5d'
+      var bustimeurl = 'http://transportapi.com/v3/uk/bus/stop/'+bonner+'/'+date+'/'+time+'/timetable.json?group=no&api_key=e2c96777c715a5d317c9d2016fdf5284&app_id=b4d09e5d'
       $.getJSON(bustimeurl, function(data) {
         console.log(String(bustimeurl));
-        console.log(String(data.departures[101][0].line));
+        for (x = 0; x <= data.departures.all.length; x++) {
+          console.log("Bus Number: " + String(data.departures.all[x].line) +
+            "\nTowards: " + String(data.departures.all[x].direction) +
+            "\nNext Departure: " + String(data.departures.all[x].aimed_departure_time));
+        }
+
       });
       }
 
