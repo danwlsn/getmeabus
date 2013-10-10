@@ -49,13 +49,13 @@ function initialize() {
       // This block locates the nearest bus stops
       var url = 'http://transportapi.com/v3/uk/bus/stops/near.json?lat='
       + String(position.coords.latitude) + '&lon=' + String(position.coords.longitude)
-      + '&api_key=e2c96777c715a5d317c9d2016fdf5284&app_id=b4d09e5d'
+      + '&api_key=e2c96777c715a5d317c9d2016fdf5284&app_id=b4d09e5d&callback=?'
       $.getJSON(url, function(data) {
         var busstops = [];
         for (var i = 0; i <= data.stops.length; i++){
           var infowindow = new google.maps.InfoWindow();
           var item = data.stops[i];
-          var info = [item.atcocode, item.latitude, item.longitude];
+          var info = [item.atcocode, item.latitude, item.longitude, item.name];
           busstops.push(info);
 
           for (i = 0; i < busstops.length; i++) {
@@ -68,9 +68,9 @@ function initialize() {
 
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
               return function() {
-                infowindow.setContent(busstops[i][0]);
+                infowindow.setContent(busstops[i][3]);
                 infowindow.open(map, marker);
-                getBusTimetable(infowindow.content);
+                getBusTimetable(busstops[i][0]);
               }
             })(marker, i));
           }
@@ -85,14 +85,15 @@ function initialize() {
                        + currentdate.getDate();
         var time = currentdate.getHours() + ":"
                     + currentdate.getMinutes();
-        var bustimeurl = 'http://transportapi.com/v3/uk/bus/stop/'+bonner+'/'+date+'/'+time+'/timetable.json?group=no&api_key=e2c96777c715a5d317c9d2016fdf5284&app_id=b4d09e5d'
+        var bustimeurl = 'http://transportapi.com/v3/uk/bus/stop/'+bonner+'/'+date+'/'+time+'/timetable.json?group=no&api_key=e2c96777c715a5d317c9d2016fdf5284&app_id=b4d09e5d&callback=?'
         $.getJSON(bustimeurl, function(data) {
           var bustimes = [];
           for (x = 0; x <= data.departures.all.length; x++) {
-            console.log("Bus Number: " + String(data.departures.all[x].line) +
-              "\nTowards: " + String(data.departures.all[x].direction) +
-              "\nNext Departure: " + String(data.departures.all[x].aimed_departure_time));
-            var times = [data.departures.all[x].line, data.departures.all[x].direction, data.departures.all[x].aimed_departure_time];
+            var item = data.departures.all[x];
+            console.log("Bus Number: " + String(item.line) +
+              "\nTowards: " + String(item.direction) +
+              "\nNext Departure: " + String(item.aimed_departure_time));
+            var times = [item.line, item.direction, item.aimed_departure_time];
             bustimes.push(times);
 
             //for (x = 0; x < bustimes.length; x++) {
