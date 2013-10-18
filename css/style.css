@@ -1,6 +1,16 @@
 /* Import google fonts*/
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,100);
 
+* {
+	/*display: block;*/
+	padding: 0;
+	margin: 0;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	box-sizing:border-box;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -75,11 +85,14 @@ header {
 	}
 
 @media (max-width: 320px) {
+	.alpha--banner {
+		font-size: 10px;
+	}
 	header, .display-timetable {
 		padding:0 .5em;
 	}
 	header p {
-		font-size: 10px;
+		font-size: 6px;
 	}
 	#map-canvas {
 		height: 200px;
