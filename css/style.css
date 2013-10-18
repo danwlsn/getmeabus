@@ -72,7 +72,10 @@ header {
 }
 
 @media (max-width: 320px) {
-#map-canvas {
-	height: 200px;
-}
+	header p {
+		font-size: 10px;
+	}
+	#map-canvas {
+		height: 200px;
+	}
 	}
