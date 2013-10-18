@@ -69,4 +69,25 @@ header {
 
 .display-timetable {
 	margin-top: 20px;
+	padding: 0.5rem 0;
 }
+
+.display-list {
+	list-style: none;
+}
+
+.display-list li {
+	padding-bottom: 0.3rem;
+}
+
+@media (max-width: 320px) {
+	header {
+		padding:0 1.5rem;
+	}
+	header p {
+		font-size: 10px;
+	}
+	#map-canvas {
+		height: 200px;
+	}
+	}
