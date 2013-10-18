@@ -34,11 +34,11 @@ function initialize() {
   			  $.getJSON(url, function(json) {
     				window.gpostcode = String((json.results[1].address_components[0].long_name))
     				$('.code').html(window.gpostcode)
-            var infowindow = new google.maps.InfoWindow({
-              map: map,
-              position: pos,
-              content: window.gpostcode
-            });
+            // var infowindow = new google.maps.InfoWindow({
+            //   map: map,
+            //   position: pos,
+            //   content: window.gpostcode
+            // });
            })
       	}
       }
