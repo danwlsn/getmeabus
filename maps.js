@@ -13,20 +13,20 @@ function initialize() {
     ]
   };
 
-  // Default latlng
+  // Default latlng - Takk location
   var lat =53.48131904602191;
   var lng = -2.232416151348957;
 
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
 
-    // Try HTML5 geolocation
+  // Try HTML5 geolocation
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       pos = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
 
-      // Post code business
+      // Find postcode from latlng
       var gpostcode;
       var Info = {
       	fetch: function(latlng) {
@@ -34,11 +34,6 @@ function initialize() {
   			  $.getJSON(url, function(json) {
     				window.gpostcode = String((json.results[1].address_components[0].long_name))
     				$('.code').html(window.gpostcode)
-            // var infowindow = new google.maps.InfoWindow({
-            //   map: map,
-            //   position: pos,
-            //   content: window.gpostcode
-            // });
            })
       	}
       }
@@ -46,7 +41,7 @@ function initialize() {
       Info.fetch(String(position.coords.latitude)+","+String(position.coords.longitude));
 
 
-      // This block locates the nearest bus stops
+      // Get nearest bus stops
       var url = 'http://transportapi.com/v3/uk/bus/stops/near.json?lat='
       + String(position.coords.latitude) + '&lon=' + String(position.coords.longitude)
       + '&api_key=e2c96777c715a5d317c9d2016fdf5284&app_id=b4d09e5d&callback=?'
@@ -58,6 +53,7 @@ function initialize() {
           var info = [item.atcocode, item.latitude, item.longitude, item.name];
           busstops.push(info);
 
+          // Dispay stops
           for (i = 0; i < busstops.length; i++) {
             marker = new google.maps.Marker({
               position: new google.maps.LatLng(busstops[i][1], busstops[i][2]),
@@ -66,6 +62,7 @@ function initialize() {
               atcocode: busstops[i][0]
             });
 
+            // Busstop click event
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
               return function() {
                 infowindow.setContent(busstops[i][3]);
@@ -77,7 +74,7 @@ function initialize() {
         }
       });
 
-      // This block displaces the bus departure times for the selceted bus stop using the actocode
+      // Display busstop times in body
       function getBusTimetable(bonner){
         var currentdate = new Date();
         var date = currentdate.getFullYear() + "-"
@@ -102,29 +99,6 @@ function initialize() {
         });
       }
 
-      // replacing the above function
-      // Should return postcode when complete
-      // Just returning Object object so far
-      // function latLngToPostcode(latlng) {
-      //   var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&sensor=true';
-      //   return $.getJSON(url, function(json) {
-      //       GlobalPostcode = String(json.results[1].address_components[0].long_name);
-      //      })
-      // }
-
-      // function itCantBeThatEasy(latlng) {
-      //   var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&sensor=true';
-      //   // var json = $.getJSON(url);
-      //   $.getJSON(url, function(json) {
-      //       String(json.results[1].address_components[0].long_name));
-      //   })
-      // }
-
-      // itCantBeThatEasy(String(position.coords.latitude)+","+String(position.coords.longitude));
-
-      // Alert as debug for above function
-      // alert(latLngToPostcode(String(position.coords.latitude)+","+String(position.coords.longitude)));
-
       /* **************************
       * replacing the above function
       * Should return postcode when complete
@@ -135,19 +109,6 @@ function initialize() {
             GlobalPostcode = String(json.results[1].address_components[0].long_name);
            })
       }
-
-      function itCantBeThatEasy(latlng) {
-        var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&sensor=true';
-        // var json = $.getJSON(url);
-        $.getJSON(url, function(json) {
-            String(json.results[1].address_components[0].long_name));
-        })
-      }
-
-      itCantBeThatEasy(String(position.coords.latitude)+","+String(position.coords.longitude));
-
-      * Alert as debug for above function
-      alert(latLngToPostcode(String(position.coords.latitude)+","+String(position.coords.longitude)));
       * *******************************/
 
       // Marker on location
@@ -170,25 +131,16 @@ function initialize() {
   function handleNoGeolocation(errorFlag) {
     if (errorFlag) {
       $('#map-canvas').addClass('blur');
-      $('.postcode--search').toggle();
-      var content = 'Error: The Geolocation service failed.';
+      $('.postcode').toggle();
     } else {
       $('#map-canvas').addClass('blur');
-      $('.postcode--search').css('display', 'block');
-      var content = 'Error: Your browser doesn\'t support geolocation.';
+      $('.postcode').toggle();
     }
 
     var options = {
       map: map,
       position: new google.maps.LatLng (53.48131904602191, -2.232416151348957)
     };
-
-    // var options = {
-    //   map: map,
-    //   position: new google.maps.LatLng (53.48131904602191, -2.232416151348957)
-    //   position: new google.maps.LatLng (lat, lng),
-    //   content: content
-    // };
 
     var infowindow = new google.maps.InfoWindow(options);
     map.setCenter(options.position);
