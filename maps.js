@@ -93,14 +93,10 @@ function initialize() {
             console.log("Bus Number: " + String(item.line) +
               "\nTowards: " + String(item.direction) +
               "\nNext Departure: " + String(item.aimed_departure_time));
-            var times = [item.line, item.direction, item.aimed_departure_time];
-            bustimes.push(times);
-
-            //for (x = 0; x < bustimes.length; x++) {
-              $('.display-timetable').html("Bus Number: " + String(bustimes[x][0]) +
-              "\nTowards: " + String(bustimes[x][1]) +
-              "\nNext Departure: " + String(bustimes[x][2]));
-            //}
+            var timetableLS = $('.display-list');
+            timetableLS.append("<li>Bus Number: " + String(item.line) +
+              "\nTowards: " + String(item.direction) +
+              "\nNext Departure: " + String(item.aimed_departure_time) +"</li>");
           }
         });
       }
