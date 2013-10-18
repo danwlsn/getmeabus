@@ -70,3 +70,9 @@ header {
 .display-timetable {
 	margin-top: 20px;
 }
+
+@media (max-width: 320px) {
+#map-canvas {
+	height: 200px;
+}
+	}
