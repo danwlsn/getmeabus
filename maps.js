@@ -88,12 +88,13 @@ function initialize() {
         var bustimeurl = 'http://transportapi.com/v3/uk/bus/stop/'+bonner+'/'+date+'/'+time+'/timetable.json?group=no&api_key=e2c96777c715a5d317c9d2016fdf5284&app_id=b4d09e5d&callback=?'
         $.getJSON(bustimeurl, function(data) {
           var bustimes = [];
+          var timetableLS = $('.display-list');
+          timetableLS.html("");
           for (x = 0; x <= data.departures.all.length; x++) {
             var item = data.departures.all[x];
             console.log("Bus Number: " + String(item.line) +
               "\nTowards: " + String(item.direction) +
               "\nNext Departure: " + String(item.aimed_departure_time));
-            var timetableLS = $('.display-list');
             timetableLS.append("<li>Bus Number: " + String(item.line) +
               "\nTowards: " + String(item.direction) +
               "\nNext Departure: " + String(item.aimed_departure_time) +"</li>");
