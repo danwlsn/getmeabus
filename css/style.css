@@ -69,9 +69,13 @@ header {
 
 .display-timetable {
 	margin-top: 20px;
+	padding:1.5rem;
 }
 
 @media (max-width: 320px) {
+	header {
+		padding:0 1.5rem;
+	}
 	header p {
 		font-size: 10px;
 	}
