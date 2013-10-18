@@ -89,7 +89,7 @@ header {
 		font-size: 10px;
 	}
 	header, .display-timetable {
-		padding:0 .5em;
+		padding:.5em;
 	}
 	header p {
 		font-size: 7px;
