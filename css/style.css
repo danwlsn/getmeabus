@@ -83,8 +83,8 @@ html, body {
 		border-top:1px solid #666;
 		border-bottom:1px solid #666;
 	}
-	.close {
-		background-color: rgba(255,0,0,0.1);
+	.display-list .close {
+		background-color: rgb(255,0,0);
 	}
 
 	.right {
