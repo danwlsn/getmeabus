@@ -40,9 +40,13 @@ html, body {
 	-webkit-filter: blur(10px);
 }
 
-.alpha--banner {
-	padding: 0;
-	margin: 0;
+.main {
+	margin: 0 auto;
+	padding:1em;
+	max-width:800px;
+}
+
+.alpha-banner {
 	display: block;
 	top:0;
 	left:0;
@@ -51,29 +55,21 @@ html, body {
 	background-color: #c0392b;
 	color:#fff;
 }
-	.alpha--banner p {
+	.alpha-banner p {
 		padding: 1em;
-		margin: 0;
 	}
-
-header {
-	width: 800px;
-	margin:0 auto;
-	padding:1em;
-}
 
 .postcode {
 	display:none;
 	position: absolute;
 	left:0;
-	top:300px;
+	top:250px;
 	width:100%;
 	text-align: center;
 }
 
 .display-timetable {
 	margin-top: 20px;
-	padding: 1em;
 }
 
 	.display-list {
@@ -85,11 +81,12 @@ header {
 	}
 
 @media (max-width: 320px) {
-	.alpha--banner {
+	.alpha-banner {
 		font-size: 10px;
 	}
-	header, .display-timetable {
+	.main {
 		padding:.5em;
+		width:100%;
 	}
 	header p {
 		font-size: 7px;
