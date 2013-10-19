@@ -92,13 +92,17 @@ function initialize() {
             console.log("Bus Number: " + String(item.line) +
               "\nTowards: " + String(item.direction) +
               "\nNext Departure: " + String(item.aimed_departure_time));
-            if(x==0)
-              timetableLS.append("<li class=\"close\">");
-            else
-              timetableLS.append("<li>");
-            timetableLS.append("Bus Number: " + String(item.line) +
+            if (x==0)
+            {
+              timetableLS.append("<li class=\"close\"">Bus Number: " + String(item.line) +
               "\nTowards: " + String(item.direction) +
               "<span class=\"right\">" + String(item.aimed_departure_time) +"</span></li>");
+            } else {
+              timetableLS.append("<li>Bus Number: " + String(item.line) +
+              "\nTowards: " + String(item.direction) +
+              "<span class=\"right\">" + String(item.aimed_departure_time) +"</span></li>");
+            }
+
           }
         });
       }
