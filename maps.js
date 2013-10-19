@@ -94,7 +94,7 @@ function initialize() {
               "\nNext Departure: " + String(item.aimed_departure_time));
             timetableLS.append("<li>Bus Number: " + String(item.line) +
               "\nTowards: " + String(item.direction) +
-              "\nNext Departure: " + String(item.aimed_departure_time) +"</li>");
+              "<span class=\"right\""> + String(item.aimed_departure_time) +"</span></li>");
           }
         });
       }

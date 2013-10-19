@@ -77,7 +77,12 @@ html, body {
 	}
 
 	.display-list li {
+		background-color: rgba(0,0,0,0.1);
 		padding-bottom: 0.5rem;
+	}
+
+	.right {
+		text-align: right;
 	}
 
 @media (max-width: 320px) {
