@@ -92,7 +92,7 @@ function initialize() {
             console.log("Bus Number: " + String(item.line) +
               "\nTowards: " + String(item.direction) +
               "\nNext Departure: " + String(item.aimed_departure_time));
-            if (x<=3)
+            if (x<=2)
             {
               timetableLS.append("<li class=\"close\">Bus Number: " + String(item.line) +
               "\nTowards: " + String(item.direction) +
