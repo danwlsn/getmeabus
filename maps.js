@@ -94,7 +94,7 @@ function initialize() {
               "\nNext Departure: " + String(item.aimed_departure_time));
             if (x==0)
             {
-              timetableLS.append("<li class=\"close\"">Bus Number: " + String(item.line) +
+              timetableLS.append("<li class=\"close\">Bus Number: " + String(item.line) +
               "\nTowards: " + String(item.direction) +
               "<span class=\"right\">" + String(item.aimed_departure_time) +"</span></li>");
             } else {
@@ -102,7 +102,6 @@ function initialize() {
               "\nTowards: " + String(item.direction) +
               "<span class=\"right\">" + String(item.aimed_departure_time) +"</span></li>");
             }
-
           }
         });
       }
