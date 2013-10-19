@@ -78,13 +78,13 @@ html, body {
 
 	.display-list li {
 		background-color: rgba(0,0,0,0.1);
-		padding: 1em 0;
+		padding: 1em;
 		padding-right:10px;
 		border-top:1px solid #666;
 		border-bottom:1px solid #666;
 	}
 	.display-list .close {
-		background-color: rgb(255,0,0);
+		background-color: rgba(255,0,0,0.1);
 	}
 
 	.right {
