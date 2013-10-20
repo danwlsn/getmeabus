@@ -81,12 +81,19 @@ html, body {
 		padding: 1em;
 		border-top:1px solid #666;
 		border-bottom:1px solid #666;
+		height: 100px;
 	}
 	.display-list .close {
-		background-color: rgba(255,0,0,0.3);
+		/*background-color: rgba(255,0,0,0.3);*/
+		background-color: #c0392b;
+		color: white;
 	}
 	.display-list .not-so-close {
 		background-color: rgba(0,255,0,0.3);
+	}
+	.display-list .number {
+		font-size: 36px;
+		font-weight: bold;
 	}
 
 	.right {
