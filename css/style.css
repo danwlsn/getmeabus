@@ -129,12 +129,12 @@ html, body {
 	}
 
 @media (max-width: 400px) {
-	.display-list .number {
-		font-size: 24px;
+	.display-list .number, .display-list .time {
+		font-size: 30px;
 		font-style: bold;
 	}
 	.display-list .towards-text {
-		font-size:12px;
+		font-size:15px;
 	}
 
 }
