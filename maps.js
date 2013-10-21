@@ -61,6 +61,13 @@ function initialize() {
               atcocode: busstops[i][0]
             });
 
+            google.maps.event.addListener(marker, 'mouseover', (function(marker, i) {
+              return function() {
+                infowindow.setContent(busstops[i][3]);
+                infowindow.open(map, marker);
+              }
+            })(marker, i));
+
             // Busstop click event
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
               return function() {
