@@ -58,6 +58,9 @@ html, body {
 	max-width:800px;
 	margin-top:20px;
 }
+.main h1 {
+	padding: 30px 0 0 0;
+}
 
 .alpha-banner {
 	z-index: 999;
