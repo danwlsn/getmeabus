@@ -44,9 +44,11 @@ html, body {
 	margin: 0 auto;
 	padding:1em;
 	max-width:800px;
+	margin-top:55px;
 }
 
 .alpha-banner {
+	z-index: 999;
 	display: block;
 	top:0;
 	left:0;
@@ -54,6 +56,7 @@ html, body {
 	text-align: center;
 	background-color: #c0392b;
 	color:#fff;
+	position: fixed;
 }
 	.alpha-banner p {
 		padding: 1em;
