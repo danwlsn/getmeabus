@@ -108,6 +108,13 @@ html, body {
 		line-height: 66px;
 	}
 
+@media (max-width: 400px) {
+	.display-list .number {
+		font-size: 24px;
+		font-style: bold;
+	}
+}
+
 @media (max-width: 320px) {
 	.alpha-banner {
 		font-size: 10px;
