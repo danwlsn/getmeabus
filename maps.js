@@ -33,7 +33,6 @@ function initialize() {
         	var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&sensor=true'
   			  $.getJSON(url, function(json) {
     				window.gpostcode = String((json.results[1].address_components[0].long_name))
-    				$('.code').html(window.gpostcode)
            })
       	}
       }
