@@ -96,8 +96,16 @@ html, body {
 		font-weight: bold;
 	}
 
-	.right {
+	.left-list, .right-list{
+		display: inline-block;
+	}
+
+	.right-list {
 		float: right;
+		height:100%;
+	}
+	.right {
+		line-height: 66px;
 	}
 
 @media (max-width: 320px) {

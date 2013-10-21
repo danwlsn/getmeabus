@@ -94,13 +94,13 @@ function initialize() {
               "Next Departure: " + String(item.aimed_departure_time));
             if (x<=2)
             {
-              timetableLS.append("<li class=\"close\"><span class=\"number\">" + String(item.line) + "</span></br>" +
+              timetableLS.append("<li class=\"close\"><div class=\"left-list\"><span class=\"number\">" + String(item.line) + "</span></br>" +
               "Towards: " + String(item.direction) +
-              "<span class=\"right\">" + String(item.aimed_departure_time) +"</span></li>");
+              "</div><div class=\"right-list\"><span class=\"right\">" + String(item.aimed_departure_time) +"</span></div></li>");
             } else {
-              timetableLS.append("<li class=\"not-so-close\"><span class=\"number\">" + String(item.line) + "</span></br>" +
+              timetableLS.append("<li class=\"not-so-close\"><div class=\"left-list\"><span class=\"number\">" + String(item.line) + "</span></br>" +
               "Towards: " + String(item.direction) +
-              "<span class=\"right\">" + String(item.aimed_departure_time) +"</span></li>");
+              "</div><div class=\"right-list\"><span class=\"right\">" + String(item.aimed_departure_time) +"</span></div></li>");
             }
           }
         });
