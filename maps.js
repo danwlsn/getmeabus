@@ -90,16 +90,16 @@ function initialize() {
           for (x = 0; x <= data.departures.all.length; x++) {
             var item = data.departures.all[x];
             console.log("Bus Number: " + String(item.line) +
-              "\nTowards: " + String(item.direction) +
-              "\nNext Departure: " + String(item.aimed_departure_time));
+              "Towards: " + String(item.direction) +
+              "Next Departure: " + String(item.aimed_departure_time));
             if (x<=2)
             {
-              timetableLS.append("<li class=\"close\">Bus Number: " + String(item.line) +
-              "\nTowards: " + String(item.direction) +
+              timetableLS.append("<li class=\"close\"><span class=\"number\">" + String(item.line) + "</span></br>" +
+              "Towards: " + String(item.direction) +
               "<span class=\"right\">" + String(item.aimed_departure_time) +"</span></li>");
             } else {
-              timetableLS.append("<li class=\"not-so-close\">Bus Number: " + String(item.line) +
-              "\nTowards: " + String(item.direction) +
+              timetableLS.append("<li class=\"not-so-close\"><span class=\"number\">" + String(item.line) + "</span></br>" +
+              "Towards: " + String(item.direction) +
               "<span class=\"right\">" + String(item.aimed_departure_time) +"</span></li>");
             }
           }
