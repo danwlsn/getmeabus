@@ -95,11 +95,11 @@ function initialize() {
             if (x<=2)
             {
               timetableLS.append("<li class=\"close\"><div class=\"left-list\"><span class=\"number\">" + String(item.line) + "</span></br>" +
-              "<span class=\"towards-text\">Towards: " + String(item.direction) + "</span>" +
+              "<span class=\"towards-text\"> &rarr;" + String(item.direction) + "</span>" +
               "</div><div class=\"right-list\"><span class=\"right\">" + String(item.aimed_departure_time) +"</span></div></li>");
             } else {
               timetableLS.append("<li class=\"not-so-close\"><div class=\"left-list\"><span class=\"number\">" + String(item.line) + "</span></br>" +
-              "<span class=\"towards-text\">Towards: " + String(item.direction) + "</span>" +
+              "<span class=\"towards-text\"> &rarr;" + String(item.direction) + "</span>" +
               "</div><div class=\"right-list\"><span class=\"right\">" + String(item.aimed_departure_time) +"</span></div></li>");
             }
           }
