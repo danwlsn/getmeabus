@@ -44,9 +44,11 @@ html, body {
 	margin: 0 auto;
 	padding:1em;
 	max-width:800px;
+	margin-top:55px;
 }
 
 .alpha-banner {
+	z-index: 999;
 	display: block;
 	top:0;
 	left:0;
@@ -54,6 +56,7 @@ html, body {
 	text-align: center;
 	background-color: #c0392b;
 	color:#fff;
+	position: fixed;
 }
 	.alpha-banner p {
 		padding: 1em;
@@ -66,6 +69,11 @@ html, body {
 	top:250px;
 	width:100%;
 	text-align: center;
+}
+
+.bus-stop {
+	text-align: center;
+	margin-bottom:1.3em;
 }
 
 .display-timetable {
@@ -91,21 +99,19 @@ html, body {
 	.display-list .not-so-close {
 		background-color: rgba(0,255,0,0.3);
 	}
-	.display-list .number {
+	.display-list .number, .display-list .time  {
 		font-size: 36px;
 		font-weight: bold;
+		float: left;
 	}
-
-	.left-list, .right-list{
-		display: inline-block;
-	}
-
-	.right-list {
+	.display-list .time {
 		float: right;
-		height:100%;
 	}
-	.right {
-		line-height: 66px;
+	.display-list .towards-text {
+		font-size: 20px;
+	}
+	.display-list .top, .display-list .bottom {
+		display: inline-block;
 	}
 
 @media (max-width: 400px) {
@@ -113,6 +119,10 @@ html, body {
 		font-size: 24px;
 		font-style: bold;
 	}
+	.display-list .towards-text {
+		font-size:12px;
+	}
+
 }
 
 @media (max-width: 320px) {
@@ -120,7 +130,7 @@ html, body {
 		font-size: 10px;
 	}
 	.main {
-		padding:.5em;
+		padding:.5em 0;
 		width:100%;
 	}
 	header p {

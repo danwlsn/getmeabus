@@ -33,7 +33,6 @@ function initialize() {
         	var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&sensor=true'
   			  $.getJSON(url, function(json) {
     				window.gpostcode = String((json.results[1].address_components[0].long_name))
-    				$('.code').html(window.gpostcode)
            })
       	}
       }
@@ -66,6 +65,7 @@ function initialize() {
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
               return function() {
                 infowindow.setContent(busstops[i][3]);
+                $('.bus-stop').html("Selected Bus Stop: " + busstops[i][3]);
                 infowindow.open(map, marker);
                 getBusTimetable(busstops[i][0]);
               }
@@ -94,13 +94,13 @@ function initialize() {
               "Next Departure: " + String(item.aimed_departure_time));
             if (x<=2)
             {
-              timetableLS.append("<li class=\"close\"><div class=\"left-list\"><span class=\"number\">" + String(item.line) + "</span></br>" +
-              "Towards: <span class=\"towards-text\">" + String(item.direction) + "</span>" +
-              "</div><div class=\"right-list\"><span class=\"right\">" + String(item.aimed_departure_time) +"</span></div></li>");
+              timetableLS.append( "<li class=\"close\"><div class=\"top\"><span class=\"number\">" + String(item.line) + "</span>" +
+                "<span class=\"time\">" + String(item.aimed_departure_time) + "</span></div>" +
+                "<div class=\"bottom\"> <span class=\"towards-text\"> &rarr; " + String(item.direction) + "</span></div></li>");
             } else {
-              timetableLS.append("<li class=\"not-so-close\"><div class=\"left-list\"><span class=\"number\">" + String(item.line) + "</span></br>" +
-              "Towards: <span class=\"towards-text\">" + String(item.direction) + "</span>" +
-              "</div><div class=\"right-list\"><span class=\"right\">" + String(item.aimed_departure_time) +"</span></div></li>");
+              timetableLS.append("<li class=\"not-so-close\"><div class=\"top\"><span class=\"number\">" + String(item.line) + "</span>" +
+                "<span class=\"time\">" + String(item.aimed_departure_time) + "</span></div>" +
+                "<div class=\"bottom\"> <span class=\"towards-text\"> &rarr; " + String(item.direction) + "</span></div></li>");
             }
           }
         });
