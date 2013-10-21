@@ -68,6 +68,11 @@ html, body {
 	text-align: center;
 }
 
+.bus-stop {
+	text-align: center;
+	margin-bottom:1.3em;
+}
+
 .display-timetable {
 	margin-top: 20px;
 }

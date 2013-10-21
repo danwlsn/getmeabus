@@ -65,6 +65,7 @@ function initialize() {
             google.maps.event.addListener(marker, 'click', (function(marker, i) {
               return function() {
                 infowindow.setContent(busstops[i][3]);
+                $('.bus-stop').html(busstops[i][3]);
                 infowindow.open(map, marker);
                 getBusTimetable(busstops[i][0]);
               }
