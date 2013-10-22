@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
     <!-- jQuery -->
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://www.google.com/uds/api?file=uds.js&v=1.0" type="text/javascript"></script>
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
     <script src="maps.js"></script>
   </head>
@@ -23,6 +24,10 @@
     </div> <!-- map-canvas -->
     <div class="postcode">
       <h1>We need to use your location. Sorry about that.</h1>
+      <form>
+        <input type="text" id="postcode" size="10" />
+          <input type="button" value="Place Marker" onclick="javascript:usePointFromPostcode(document.getElementById('postcode').value, setCenterToPoint)" />
+      </form>
     </div> <!-- postcode -->
     <article class="main">
       <div class="display-timetable">
