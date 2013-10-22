@@ -33,13 +33,7 @@ function usePointFromPostcode(postcode, callbackFunction) {
   localSearch.execute(postcode + ", UK");
 }
 
-$("#postcode").keydown(function(event){
-    if(event.keyCode == 13){
-        $("#postbutton").click();
-    }
-});
-
-// Get and print nearest stops
+// Gets nearest bus stops
   function nearestStops(lat,lng){
     var url = 'http://transportapi.com/v3/uk/bus/stops/near.json?lat='
     + String(lat) + '&lon=' + String(lng)
@@ -68,11 +62,11 @@ $("#postcode").keydown(function(event){
             }
           })(marker, i));
 
-          // Busstop click event
+          // Bus stop click event
           google.maps.event.addListener(marker, 'click', (function(marker, i) {
             return function() {
               infowindow.setContent(busstops[i][3]);
-              $('.bus-stop').html("Selected Bus Stop: " + busstops[i][3] + "</br><p>Bus times are approximate, be smart and set off early!</p>");
+              $('.bus-stop').html("Selected Bus Stop: " + busstops[i][3] + "</br><p>Bus times are approximate, be smart and get to the bus stop early!</p>");
               infowindow.open(map, marker);
               getBusTimetable(busstops[i][0]);
             }
@@ -82,7 +76,7 @@ $("#postcode").keydown(function(event){
     });
   }
 
-  // get bus times
+  // Print bus times in body
   function getBusTimetable(bonner){
     var currentdate = new Date();
     var date = currentdate.getFullYear() + "-"
@@ -100,18 +94,15 @@ $("#postcode").keydown(function(event){
         console.log("Bus Number: " + String(item.line) +
           "Towards: " + String(item.direction) +
           "Next Departure: " + String(item.aimed_departure_time));
-        if (item.aimed_departure_time == null) {
-            alert('NO BUS TIME');
-          }
         if (x<=2)
         {
-          if(item.aimed_departure_time == null)
-            break;
-          else {
+          // if(item.aimed_departure_time == null)
+          //   break;
+          // else {
             timetableLS.append( "<li class=\"cf close\"><div class=\"top\"><span class=\"number\">" + String(item.line) + "</span>" +
               "<span class=\"time\">" + String(item.aimed_departure_time) + "</span></div>" +
               "<div class=\"bottom\"> <span class=\"towards-text\"> &rarr; " + String(item.direction) + "</span></div></li>");
-          }
+          // }
         } else {
           if(item.aimed_departure_time == null)
             break;
@@ -121,8 +112,8 @@ $("#postcode").keydown(function(event){
               "<div class=\"bottom\"> <span class=\"towards-text\"> &rarr; " + String(item.direction) + "</span></div></li>");
           }
         }
-        if($('.display-list').children('li').length == 0)
-          $('.error').html("Sorry, no buses found");
+        // if($('.display-list').children('li').length == 0)
+        //   $('.error').html("Sorry, no buses found");
       }
     });
   }
