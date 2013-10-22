@@ -9,8 +9,8 @@ function setCenterToPoint(point)
         animation: google.maps.Animation.DROP
       });
 
-      // Center map on postion
-      map.setCenter(point);
+  // Center map on postion
+  map.setCenter(point);
   $('#map-canvas').removeClass('blur');
   $('.postcode').toggle();
   nearestStops(point.lat(), point.lng());
@@ -105,14 +105,24 @@ $("#postcode").keydown(function(event){
           }
         if (x<=2)
         {
-          timetableLS.append( "<li class=\"cf close\"><div class=\"top\"><span class=\"number\">" + String(item.line) + "</span>" +
-            "<span class=\"time\">" + String(item.aimed_departure_time) + "</span></div>" +
-            "<div class=\"bottom\"> <span class=\"towards-text\"> &rarr; " + String(item.direction) + "</span></div></li>");
+          if(item.aimed_departure_time == null)
+            break;
+          else {
+            timetableLS.append( "<li class=\"cf close\"><div class=\"top\"><span class=\"number\">" + String(item.line) + "</span>" +
+              "<span class=\"time\">" + String(item.aimed_departure_time) + "</span></div>" +
+              "<div class=\"bottom\"> <span class=\"towards-text\"> &rarr; " + String(item.direction) + "</span></div></li>");
+          }
         } else {
-          timetableLS.append("<li class=\"cf not-so-close\"><div class=\"top\"><span class=\"number\">" + String(item.line) + "</span>" +
-            "<span class=\"time\">" + String(item.aimed_departure_time) + "</span></div>" +
-            "<div class=\"bottom\"> <span class=\"towards-text\"> &rarr; " + String(item.direction) + "</span></div></li>");
+          if(item.aimed_departure_time == null)
+            break;
+          else {
+            timetableLS.append("<li class=\"cf not-so-close\"><div class=\"top\"><span class=\"number\">" + String(item.line) + "</span>" +
+              "<span class=\"time\">" + String(item.aimed_departure_time) + "</span></div>" +
+              "<div class=\"bottom\"> <span class=\"towards-text\"> &rarr; " + String(item.direction) + "</span></div></li>");
+          }
         }
+        if($('.display-list').children('li').length == 0)
+          $('.error').html("Sorry, no buses found");
       }
     });
   }
