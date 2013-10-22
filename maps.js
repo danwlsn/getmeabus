@@ -113,18 +113,6 @@ function initialize() {
         });
       }
 
-      /* **************************
-      * replacing the above function
-      * Should return postcode when complete
-      * Just returning Object object so far
-      function latLngToPostcode(latlng) {
-        var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&sensor=true';
-        return $.getJSON(url, function(json) {
-            GlobalPostcode = String(json.results[1].address_components[0].long_name);
-           })
-      }
-      * *******************************/
-
       // Marker on location
       var marker = new google.maps.Marker({
         position: pos,
