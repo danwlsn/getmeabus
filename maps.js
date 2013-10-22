@@ -13,6 +13,7 @@ function setCenterToPoint(point)
       map.setCenter(point);
   $('#map-canvas').removeClass('blur');
   $('.postcode').toggle();
+  nearestStops(point.lat(), point.lng());
 }
 
 function usePointFromPostcode(postcode, callbackFunction) {
@@ -32,69 +33,7 @@ function usePointFromPostcode(postcode, callbackFunction) {
   localSearch.execute(postcode + ", UK");
 }
 
-function initialize() {
-  var mapOptions = {
-    zoom: 16,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    styles: [
-      {
-        featureType: "poi",
-        stylers: [
-        { visibility: "off" }
-      ]
-      }
-    ]
-  };
-
-  // Default latlng - Takk location
-  var lat =53.48131904602191;
-  var lng = -2.232416151348957;
-
-  map = new google.maps.Map(document.getElementById('map-canvas'),
-      mapOptions);
-
-  // Try HTML5 geolocation
-  if(navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      pos = new google.maps.LatLng(position.coords.latitude,
-                                       position.coords.longitude);
-
-      // Find postcode from latlng
-      var gpostcode;
-      var Info = {
-      	fetch: function(latlng) {
-        	var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&sensor=true'
-  			  $.getJSON(url, function(json) {
-    				window.gpostcode = String((json.results[1].address_components[0].long_name))
-           })
-      	}
-      }
-
-      Info.fetch(String(position.coords.latitude)+","+String(position.coords.longitude));
-
-
-      // Marker on location
-      var marker = new google.maps.Marker({
-        position: pos,
-        map: map,
-        animation: google.maps.Animation.DROP
-      });
-
-      // Center map on postion
-      map.setCenter(pos);
-
-      // Get nearest stops and print bus times
-      nearestStops(position.coords.latitude, position.coords.longitude);
-
-    }, function() {
-      handleNoGeolocation(true);
-    });
-  } else {
-    // Browser doesn't support Geolocation
-    handleNoGeolocation(false);
-  }
-
-  // Get and print nearest stops
+// Get and print nearest stops
   function nearestStops(lat,lng){
     var url = 'http://transportapi.com/v3/uk/bus/stops/near.json?lat='
     + String(lat) + '&lon=' + String(lng)
@@ -167,6 +106,68 @@ function initialize() {
         }
       }
     });
+  }
+
+function initialize() {
+  var mapOptions = {
+    zoom: 16,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    styles: [
+      {
+        featureType: "poi",
+        stylers: [
+        { visibility: "off" }
+      ]
+      }
+    ]
+  };
+
+  // Default latlng - Takk location
+  var lat =53.48131904602191;
+  var lng = -2.232416151348957;
+
+  map = new google.maps.Map(document.getElementById('map-canvas'),
+      mapOptions);
+
+  // Try HTML5 geolocation
+  if(navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function(position) {
+      pos = new google.maps.LatLng(position.coords.latitude,
+                                       position.coords.longitude);
+
+      // Find postcode from latlng
+      var gpostcode;
+      var Info = {
+      	fetch: function(latlng) {
+        	var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng=' + latlng + '&sensor=true'
+  			  $.getJSON(url, function(json) {
+    				window.gpostcode = String((json.results[1].address_components[0].long_name))
+           })
+      	}
+      }
+
+      Info.fetch(String(position.coords.latitude)+","+String(position.coords.longitude));
+
+
+      // Marker on location
+      var marker = new google.maps.Marker({
+        position: pos,
+        map: map,
+        animation: google.maps.Animation.DROP
+      });
+
+      // Center map on postion
+      map.setCenter(pos);
+
+      // Get nearest stops and print bus times
+      nearestStops(position.coords.latitude, position.coords.longitude);
+
+    }, function() {
+      handleNoGeolocation(true);
+    });
+  } else {
+    // Browser doesn't support Geolocation
+    handleNoGeolocation(false);
   }
 
   function handleNoGeolocation(errorFlag) {
