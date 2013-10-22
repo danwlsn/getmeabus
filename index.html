@@ -23,10 +23,10 @@
     <div id="map-canvas">
     </div> <!-- map-canvas -->
     <div class="postcode">
-      <h1>We need to use your location. Sorry about that.</h1>
+      <h1>We need to use your location. Sorry about that </br>Enter your postcode below to locate nearby bus stops.</h1>
       <form>
         <input type="text" id="postcode" size="10" />
-          <input type="button" value="Place Marker" onclick="javascript:usePointFromPostcode(document.getElementById('postcode').value, setCenterToPoint)" />
+          <input type="button" id="postbutton" value="Find Bus Stops" onclick="javascript:usePointFromPostcode(document.getElementById('postcode').value, setCenterToPoint)" />
       </form>
     </div> <!-- postcode -->
     <article class="main">

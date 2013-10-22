@@ -152,7 +152,10 @@ footer {
 		color:#666;
 	}
 
-@media (max-width: 400px) {
+@media (max-width: 515px) {
+	.postcode h1 {
+		font-size: 15px;
+	}
 	.display-list .number, .display-list .time {
 		font-size: 30px;
 		font-style: bold;
