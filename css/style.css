@@ -223,4 +223,7 @@ footer {
 	#map-canvas {
 		height: 200px;
 	}
+	.postcode {
+		top:80px;
+	}
 }
