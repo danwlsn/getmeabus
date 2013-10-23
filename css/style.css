@@ -85,12 +85,21 @@ html, body {
 	width:100%;
 	text-align: center;
 }
+	.postcode h1 {
+		font-size: 24px;
+		margin-bottom: 10px;
+	}
 
-#postcode {
-	background-color: #FAF8FF;
-	text-align: center;
-	width: 100px;
-}
+	.postcode-input {
+		background-color: rgba(0,0,0,0.1);
+		text-align: center;
+		width: 200px;
+		padding:0.5em;
+		font-size: 20px;
+		border: 1px solid #999;
+		border-radius:15px;
+	}
+	.
 
 .bus-stop {
 	text-align: center;

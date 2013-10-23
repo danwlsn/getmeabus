@@ -197,33 +197,6 @@ function initialize() {
     var infowindow = new google.maps.InfoWindow(options);
     map.setCenter(options.position);
   }
-
-  /* ***********************
-  * None of this shit works.
-  * ************************
-  var localSearch = new GlocalSearch();
-  function usePointFromPostcode(postcode, callbackFunction) {
-    localSearch.setSearchCompleteCallback(null,
-      function() {
-        if (localSearch.results[0]) {
-          var resultLat = localSearch.results[0].lat;
-          var resultLng = localSearch.results[0].lng;
-          var point = new GLatLng(resultLat,resultLng);
-          callbackFunction(point);
-        }else{
-          alert("Postcode not found!");
-        }
-      });
-    localSearch.execute(postcode + ", UK");
-  }
-
-  // DOM listener
-  google.maps.event.addDomListener(document.getElementById('postcode--btn'), 'click', function(){
-    alert('button pressed');
-    usePointFromPostcode(document.getElementById('postcode--input').value, setCenterToPoint);
-  })
-
-  * *********************/
 }
 
 google.maps.event.addDomListener(window, 'load', initialize);
