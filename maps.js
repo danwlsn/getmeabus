@@ -1,3 +1,10 @@
+$(function() {
+    $("form").submit(function() {
+      $('#postbutton').click();
+      return false;
+    });
+});
+
 var map;
 var localSearch = new GlocalSearch();
 
