@@ -52,21 +52,12 @@ html, body {
 	-webkit-filter: blur(10px);
 }
 
-header h1 {
-	font-size: 40px;
-	font-weight: 100;
-}
-
 .main {
 	margin: 0 auto;
 	padding:1em;
 	max-width:800px;
 	margin-top:1.3em;
 }
-.main h1 {
-	padding: 30px 0 0 0;
-}
-
 .alpha-banner {
 	z-index: 999;
 	display: block;
@@ -80,6 +71,15 @@ header h1 {
 }
 	.alpha-banner p {
 		padding: 1em;
+	}
+
+
+header {
+	margin-top: 50px;
+}
+	header h1 {
+		font-size: 40px;
+		font-weight: 100;
 	}
 
 .postcode {
