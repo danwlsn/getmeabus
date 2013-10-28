@@ -52,6 +52,11 @@ html, body {
 	-webkit-filter: blur(10px);
 }
 
+header h1 {
+	font-size: 40px;
+	font-weight: 100;
+}
+
 .main {
 	margin: 0 auto;
 	padding:1em;
@@ -132,6 +137,7 @@ html, body {
 .bus-stop {
 	text-align: center;
 	margin-bottom:1.3em;
+	font-weight: 100;
 }
 
 	.display-list {
@@ -169,6 +175,9 @@ html, body {
 		display: block;
 		width:100%;
 	}
+	.towards-text {
+		font-weight: 100;
+	}
 
 footer {
 	margin-top: 20px;
@@ -176,6 +185,7 @@ footer {
 	color:#666;
 	padding:1em 0;
 	text-align: right;
+	font-weight: 100;
 }
 	footer a {
 		text-decoration: none;

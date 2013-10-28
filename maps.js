@@ -94,8 +94,8 @@ function usePointFromPostcode(postcode, callbackFunction) {
         console.log("Bus Number: " + String(item.line) +
           "Towards: " + String(item.direction) +
           "Next Departure: " + String(item.aimed_departure_time));
-        if (x<=2)
-        {
+        // if (x<=2)
+        // {
           // if(item.aimed_departure_time == null)
           //   break;
           // else {
@@ -103,15 +103,15 @@ function usePointFromPostcode(postcode, callbackFunction) {
               "<span class=\"time\">" + String(item.aimed_departure_time) + "</span></div>" +
               "<div class=\"bottom\"> <span class=\"towards-text\"> &rarr; " + String(item.direction) + "</span></div></li>");
           // }
-        } else {
-          if(item.aimed_departure_time == null)
-            break;
-          else {
-            timetableLS.append("<li class=\"cf not-so-close\"><div class=\"top\"><span class=\"number\">" + String(item.line) + "</span>" +
-              "<span class=\"time\">" + String(item.aimed_departure_time) + "</span></div>" +
-              "<div class=\"bottom\"> <span class=\"towards-text\"> &rarr; " + String(item.direction) + "</span></div></li>");
-          }
-        }
+        // } else {
+        //   if(item.aimed_departure_time == null)
+        //     break;
+        //   else {
+        //     timetableLS.append("<li class=\"cf not-so-close\"><div class=\"top\"><span class=\"number\">" + String(item.line) + "</span>" +
+        //       "<span class=\"time\">" + String(item.aimed_departure_time) + "</span></div>" +
+        //       "<div class=\"bottom\"> <span class=\"towards-text\"> &rarr; " + String(item.direction) + "</span></div></li>");
+        //   }
+        // }
         // if($('.display-list').children('li').length == 0)
         //   $('.error').html("Sorry, no buses found");
       }
