@@ -1,45 +1,55 @@
 
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Get Me A Bus</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <link rel="stylesheet" href="css/style.css">
-    <!-- jQuery -->
-    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-    <script src="http://www.google.com/uds/api?file=uds.js&v=1.0" type="text/javascript"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-    <script src="maps.js"></script>
-  </head>
-  <body>
-    <div class="alpha-banner">
-      <p>THIS IS STILL IN ALPHA - DON'T BITE US IF IT DOESN'T WORK</p>
-    </div>
-    <article class="main">
-      <header>
-        <h1>Get me a bus</h1>
-      </header> <!-- header -->
-    </article> <!-- main -->
-    <div id="map-canvas">
-    </div> <!-- map-canvas -->
-    <div class="postcode">
-      <h1>We need to use your location. Sorry about that. </br>Enter your postcode below to locate nearby bus stops.</h1>
-      <form>
-        <input type="text" id="postcode" class="postcode-input" size="10" /><br>
-          <input type="button" class="postcode-button" id="postbutton" value="Search" onclick="javascript:usePointFromPostcode(document.getElementById('postcode').value, setCenterToPoint)" />
-      </form>
-    </div> <!-- postcode -->
-    <article class="main">
-      <div class="display-timetable">
-        <h2 class="bus-stop"></h2>
-        <h2 class="error"></h2>
-        <ul class="display-list">
-        </ul>
-      </div> <!-- display-timetable -->
-      <footer>
-        <p>As made by <a href="http://danwilson.co" target="_blank">Dan Wilson</a> and <a href="http://syeefkarim.com" target="_blank">Syeef Karim</a></p>
-      </footer>
-    </article> <!-- main -->
-  </body>
+	<head>
+		<title>Get Me A Bus</title>
+		<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/style.css">
+		<!-- jQuery -->
+		<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+		<script src="http://www.google.com/uds/api?file=uds.js&v=1.0" type="text/javascript"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+		<script src="maps.js"></script>
+	</head>
+	<body>
+		<div class="alpha-banner">
+			<p>THIS IS STILL IN ALPHA - DON'T BITE US IF IT DOESN'T WORK</p>
+		</div>
+		<article class="main">
+			<header>
+				<h1>Get me a bus</h1>
+			</header> <!-- header -->
+		</article> <!-- main -->
+		<div id="map-canvas">
+		</div> <!-- map-canvas -->
+		<div class="postcode">
+			<h1>We need to use your location. Sorry about that. </br>Enter your postcode below to locate nearby bus stops.</h1>
+			<form>
+				<input type="text" id="postcode" class="postcode-input" size="10" /><br>
+					<input type="button" class="postcode-button" id="postbutton" value="Search" onclick="javascript:usePointFromPostcode(document.getElementById('postcode').value, setCenterToPoint)" />
+			</form>
+		</div> <!-- postcode -->
+		<article class="main">
+			<div class="display-timetable">
+				<h2 class="bus-stop"></h2>
+				<h2 class="error"></h2>
+				<ul class="display-list">
+				</ul>
+			</div> <!-- display-timetable -->
+			<footer>
+				<p>As made by <a href="http://danwilson.co" target="_blank">Dan Wilson</a> and <a href="http://syeefkarim.com" target="_blank">Syeef Karim</a></p>
+			</footer>
+		</article> <!-- main -->
+
+	<script>
+	(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	ga('create', 'UA-45280289-1', 'getmeabus.com');
+	ga('send', 'pageview');
+	</script>
+	</body>
 </html>
