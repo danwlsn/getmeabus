@@ -44,10 +44,6 @@ html, body {
 	transition:all 0.3s ease-in-out;
 }
 
-#map-canvas:hover {
-	/*-webkit-filter: blur(0);*/
-}
-
 .blur {
 	-webkit-filter: blur(10px);
 }
@@ -156,9 +152,6 @@ header {
 		/*background-color: rgba(255,0,0,0.3);*/
 		background-color: #c0392b;
 		color: white;
-	}
-	.display-list .not-so-close {
-		background-color: rgba(0,255,0,0.3);
 	}
 
 	.display-list .number, .display-list .time  {
