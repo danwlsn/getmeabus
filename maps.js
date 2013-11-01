@@ -98,15 +98,17 @@ function usePointFromPostcode(postcode, callbackFunction) {
       timetableLS.html("");
       for (x = 0; x <= data.departures.all.length; x++) {
         var item = data.departures.all[x];
-        console.log("Bus Number: " + String(item.line) +
-          "Towards: " + String(item.direction) +
-          "Next Departure: " + String(item.aimed_departure_time));
+        // console.log("Bus Number: " + String(item.line) +
+        //   "Towards: " + String(item.direction) +
+        //   "Next Departure: " + String(item.aimed_departure_time));
         // if (x<=2)
         // {
           // if(item.aimed_departure_time == null)
           //   break;
           // else {
-            timetableLS.append( "<li class=\"cf close\"><div class=\"top\"><span class=\"number\">" + String(item.line) + "</span>" +
+            timetableLS.append("<li class=\"cf close\"><div class=\"top\"><span class=\"number\">" + String(item.line) + "</span>" +
+              "<span class=\"minutes\"></span>" +
+              "<span class=\"seconds\"></span>" +
               "<span class=\"time\">" + String(item.aimed_departure_time) + "</span></div>" +
               "<div class=\"bottom\"> <span class=\"towards-text\"> &rarr; " + String(item.direction) + "</span></div></li>");
           // }
@@ -125,21 +127,51 @@ function usePointFromPostcode(postcode, callbackFunction) {
     });
   }
 
-function initialize() {
-  var mapOptions = {
-    zoom: 16,
-    mapTypeId: google.maps.MapTypeId.ROADMAP,
-    styles: [
-      {
-        featureType: "poi",
-        stylers: [
-        { visibility: "off" }
-      ]
-      }
-    ]
-  };
+// setInterval(function(){
+//     //var future = new Date("Nov 01 2013 " + String(item.aimed_departure_time) + ":00 GMT");
+//     //var future = new Date("Nov 01 2013 17:50:00 GMT");
+//     var now = new Date();
+//     var difference = Math.floor((future.getTime() - now.getTime()) / 1000);
 
-  // Default latlng - Takk location
+//     var seconds = fixIntegers(difference % 60);
+//     difference = Math.floor(difference / 60);
+
+//     var minutes = fixIntegers(difference % 60);
+//     difference = Math.floor(difference / 60);
+
+//     var hours = fixIntegers(difference % 24);
+//     difference = Math.floor(difference / 24);
+
+//     var days = difference;
+
+//     $(".seconds").text(seconds + "s");
+//     $(".minutes").text(minutes + "m");
+// }, 1000);
+
+// function fixIntegers(integer)
+// {
+//     if (integer < 0)
+//         integer = 0;
+//     if (integer < 10)
+//         return "0" + integer;
+//     return "" + integer;
+// }
+
+// function initialize() {
+//   var mapOptions = {
+//     zoom: 16,
+//     mapTypeId: google.maps.MapTypeId.ROADMAP,
+//     styles: [
+//       {
+//         featureType: "poi",
+//         stylers: [
+//         { visibility: "off" }
+//       ]
+//       }
+//     ]
+//   };
+
+  // Default latlng - Location of Takk
   var lat =53.48131904602191;
   var lng = -2.232416151348957;
 
