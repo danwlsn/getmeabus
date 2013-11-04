@@ -18,8 +18,7 @@ function usePointFromPostcode(postcode, callbackFunction) {
         var point = new google.maps.LatLng(resultLat,resultLng);
         callbackFunction(point);
       }else{
-        $('.banner').html('POSTCODE NOT FOUND!')
-        // alert("Postcode not found!");
+        alert("SORRY MATE, BUT THAT POSTCODE DOESN'T EXIST!");
       }
     });
 
