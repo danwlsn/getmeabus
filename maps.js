@@ -129,7 +129,7 @@ function usePointFromPostcode(postcode, callbackFunction) {
 
 // setInterval(function(){
 //     //var future = new Date("Nov 01 2013 " + String(item.aimed_departure_time) + ":00 GMT");
-//     //var future = new Date("Nov 01 2013 17:50:00 GMT");
+//     var future = new Date("Nov 04 2013 17:50:00 GMT");
 //     var now = new Date();
 //     var difference = Math.floor((future.getTime() - now.getTime()) / 1000);
 
@@ -157,19 +157,19 @@ function usePointFromPostcode(postcode, callbackFunction) {
 //     return "" + integer;
 // }
 
-// function initialize() {
-//   var mapOptions = {
-//     zoom: 16,
-//     mapTypeId: google.maps.MapTypeId.ROADMAP,
-//     styles: [
-//       {
-//         featureType: "poi",
-//         stylers: [
-//         { visibility: "off" }
-//       ]
-//       }
-//     ]
-//   };
+function initialize() {
+  var mapOptions = {
+    zoom: 16,
+    mapTypeId: google.maps.MapTypeId.ROADMAP,
+    styles: [
+      {
+        featureType: "poi",
+        stylers: [
+        { visibility: "off" }
+      ]
+      }
+    ]
+  };
 
   // Default latlng - Location of Takk
   var lat =53.48131904602191;
