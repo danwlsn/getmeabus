@@ -8,6 +8,24 @@ $(function() {
 var map;
 var localSearch = new GlocalSearch();
 
+function usePointFromPostcode(postcode, callbackFunction) {
+  localSearch.setSearchCompleteCallback(null,
+    function() {
+
+      if (localSearch.results[0]) {
+        var resultLat = localSearch.results[0].lat;
+        var resultLng = localSearch.results[0].lng;
+        var point = new google.maps.LatLng(resultLat,resultLng);
+        callbackFunction(point);
+      }else{
+        $('.banner').html('POSTCODE NOT FOUND!')
+        // alert("Postcode not found!");
+      }
+    });
+
+  localSearch.execute(postcode + ", UK");
+}
+
 function setCenterToPoint(point)
 {
   var marker = new google.maps.Marker({
@@ -21,23 +39,6 @@ function setCenterToPoint(point)
   $('#map-canvas').removeClass('blur');
   $('.postcode').toggle();
   nearestStops(point.lat(), point.lng());
-}
-
-function usePointFromPostcode(postcode, callbackFunction) {
-  localSearch.setSearchCompleteCallback(null,
-    function() {
-
-      if (localSearch.results[0]) {
-        var resultLat = localSearch.results[0].lat;
-        var resultLng = localSearch.results[0].lng;
-        var point = new google.maps.LatLng(resultLat,resultLng);
-        callbackFunction(point);
-      }else{
-        alert("Postcode not found!");
-      }
-    });
-
-  localSearch.execute(postcode + ", UK");
 }
 
 // Gets nearest bus stops
@@ -98,9 +99,6 @@ function usePointFromPostcode(postcode, callbackFunction) {
       timetableLS.html("");
       for (x = 0; x <= data.departures.all.length; x++) {
         var item = data.departures.all[x];
-        // console.log("Bus Number: " + String(item.line) +
-        //   "Towards: " + String(item.direction) +
-        //   "Next Departure: " + String(item.aimed_departure_time));
         // if (x<=2)
         // {
           // if(item.aimed_departure_time == null)
