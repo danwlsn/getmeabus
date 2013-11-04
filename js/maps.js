@@ -156,14 +156,8 @@ function setCenterToPoint(point)
 // }
 
 function initialize() {
-	var zoomLevel;
-	console.log($(window).width());
-	if ($(window).width()<=450)
-		zoomLevel=15;
-	else
-		zoomLevel=16;
   var mapOptions = {
-    zoom: zoomLevel,
+    zoom: 16,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     styles: [
       {
