@@ -140,10 +140,9 @@ html, body {
 
 	.display-list li {
 		background-color: rgba(0,0,0,0.1);
-		padding: 1.1em;
+		padding: 1em;
 		border-top:1px solid #666;
 		border-bottom:1px solid #666;
-		height: 100px;
 	}
 
 	.display-list .close {
