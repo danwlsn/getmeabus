@@ -158,8 +158,13 @@ function usePointFromPostcode(postcode, callbackFunction) {
 // }
 
 function initialize() {
+	var zoomLevel;
+	if (screen.width<=450)
+		zoomLevel=8;
+	else
+		zoomLevel=16;
   var mapOptions = {
-    zoom: 16,
+    zoom: zoomLevel,
     mapTypeId: google.maps.MapTypeId.ROADMAP,
     styles: [
       {
