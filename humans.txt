@@ -1,10 +1,10 @@
-Name: 		Danny Wilson
+Name:		Danny Wilson
 Twitter:	@wilsonand1
-Site:			www.danwilson.co
+Site:		www.danwilson.co
 
-Name:			Syeef Karim
+Name:		Syeef Karim
 Twitter:	@syeefkarim
-Site:			www.syeefkarim.com
+Site:		www.syeefkarim.com
 
 
-Big thanks to North Tea Power, in Manchester, for all the internet, coffee, hot chocolates, and lemonades.
+Big thanks to Takk and North Tea Power, in Manchester, for all the internet, coffee, hot chocolates, and lemonades.
