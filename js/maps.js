@@ -8,21 +8,37 @@ $(function() {
 var map;
 var localSearch = new GlocalSearch();
 
-function usePointFromPostcode(postcode, callbackFunction) {
-  localSearch.setSearchCompleteCallback(null,
-    function() {
 
-      if (localSearch.results[0]) {
-        var resultLat = localSearch.results[0].lat;
-        var resultLng = localSearch.results[0].lng;
-        var point = new google.maps.LatLng(resultLat,resultLng);
-        callbackFunction(point);
-      }else{
-        alert("SORRY MATE, BUT THAT POSTCODE DOESN'T EXIST!");
-      }
-    });
+/****************************************
+*           Depreciated
+*****************************************/
+// function usePointFromPostcode(postcode, callbackFunction) {
+//   localSearch.setSearchCompleteCallback(null,
+//     function() {
 
-  localSearch.execute(postcode + ", UK");
+//       if (localSearch.results[0]) {
+//         var resultLat = localSearch.results[0].lat;
+//         var resultLng = localSearch.results[0].lng;
+//         var point = new google.maps.LatLng(resultLat,resultLng);
+//         callbackFunction(point);
+//       }else{
+//         alert("SORRY MATE, BUT THAT POSTCODE DOESN'T EXIST!");
+//       }
+//     });
+
+//   localSearch.execute(postcode + ", UK");
+// }
+
+function usePointFromPostcode(postcode)
+{
+  var url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+postcode+",UK&key=AIzaSyDCULFgaUAucP2Jv0bJPGH_Xtktq5zN8Mc"
+
+  $.getJSON(url, function(data) {
+    var resultLat = data.results[0].geometry.lat;
+    var resultLng = data.results[0].geometry.lng;
+    var point = new google.maps.LatLng(resultLat,resultLng);
+    setCenterToPoint(point);
+  });
 }
 
 function setCenterToPoint(point)
