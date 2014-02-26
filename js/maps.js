@@ -31,11 +31,11 @@ var localSearch = new GlocalSearch();
 
 function usePointFromPostcode(postcode)
 {
-  var url = "https://maps.googleapis.com/maps/api/place/textsearch/json?query="+postcode+",UK&key=AIzaSyDCULFgaUAucP2Jv0bJPGH_Xtktq5zN8Mc"
+  var url = "http://api.postcodes.io/postcodes/"+postcode;
 
   $.getJSON(url, function(data) {
-    var resultLat = data.results[0].geometry.lat;
-    var resultLng = data.results[0].geometry.lng;
+    var resultLat = data.result.latitude;
+    var resultLng = data.result.longitude;
     var point = new google.maps.LatLng(resultLat,resultLng);
     setCenterToPoint(point);
   });
