@@ -31,16 +31,14 @@ var localSearch = new GlocalSearch();
 
 function usePointFromPostcode(postcode)
 {
-  // var url = "http://api.postcodes.io/postcodes/"+postcode;
+  var url = "http://api.postcodes.io/postcodes/"+postcode+"?callback=?";
 
-  // $.getJSON(url, function(data) {
-  //   var resultLat = data.result.latitude;
-  //   var resultLng = data.result.longitude;
-  //   var point = new google.maps.LatLng(resultLat,resultLng);
-  //   setCenterToPoint(point);
-  // });
-
-  alert('A thousand apologies, but the search function is broken. We\'re working on it');
+  $.getJSON(url, function(data) {
+    var resultLat = data.result.latitude;
+    var resultLng = data.result.longitude;
+    var point = new google.maps.LatLng(resultLat,resultLng);
+    setCenterToPoint(point);
+  });
 }
 
 function setCenterToPoint(point)
