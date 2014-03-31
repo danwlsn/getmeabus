@@ -10,7 +10,7 @@ var localSearch = new GlocalSearch();
 
 
 /****************************************
-*           Depreciated
+*           Deprecated
 *****************************************/
 // function usePointFromPostcode(postcode, callbackFunction) {
 //   localSearch.setSearchCompleteCallback(null,
